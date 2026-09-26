@@ -1,26 +1,166 @@
 @import "tailwindcss";
 
+@theme {
+  /* Fonts */
+  --font-heading: var(--font-sora), sans-serif;
+  --font-body: var(--font-manrope), sans-serif;
+
+  /* Core Palette */
+  /* --color-brand-teal: #55979b; */
+  --color-brand-teal: #267ba0;
+  /* --color-brand-teal-light: #267ba0; */
+  /* --color-brand-dark: #1c3a3e; */
+  --color-brand-dark: #06283d;
+  --color-brand-light: #cbe3e5;
+  --color-brand-bg: #f2fbff;
+  --color-brand-accent: #e07a5f;
+
+  /* Custom Gradients */
+  --bg-image-teal-hero: linear-gradient(
+    135deg,
+    #1c3a3e 0%,
+    #30656a 40%,
+    #55979b 100%
+  );
+  --bg-image-teal-fresh: linear-gradient(
+    135deg,
+    #55979b 0%,
+    #7dbec2 50%,
+    #cbe3e5 100%
+  );
+  --bg-image-teal-glass: linear-gradient(
+    180deg,
+    rgba(85, 151, 155, 0.12) 0%,
+    rgba(244, 248, 248, 0.8) 100%
+  );
+  --bg-image-teal-glow: radial-gradient(
+    circle at 50% 0%,
+    #7dbec2 0%,
+    #55979b 45%,
+    #1c3a3e 100%
+  );
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --navy: #082a4a; */
+  /* --navy: #55979b; */
+  --navy: #267ba0;
+  /* --blue: #0d5f96; */
+  /* --blue: #082a4a; */
+  --blue: #267ba0;
+  --aqua: #bdeef5;
+  --mint: #dcefe5;
+  --ink: #102b3f;
+  --muted: #617484;
+  --cream: #f7faf8;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* * {
+  box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+} */
+/* a {
+  text-decoration: none;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+::selection {
+  background: #bdeef5;
+  color: #082a4a;
+} */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
   }
 }
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(14px, -8px, 0);
+  }
+}
+.float-soft {
+  animation: float 5s ease-in-out infinite;
+}
+.drift-soft {
+  animation: drift 8s ease-in-out infinite;
+}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.hero-photo {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(5, 35, 59, 0.761) 0%,
+      rgba(5, 35, 59, 0.42) 43%,
+      rgba(5, 35, 59, 0.05) 78%
+    ),
+    /* linear-gradient(
+      135deg,
+      rgb(28, 58, 62, 0.761) 0%,
+      rgb(48, 101, 106, 0.42) 40%,
+      rgb(85, 151, 155, 0.05) 78%
+    ), */
+    url("/bottle.jpeg");
+  /* url("https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=2200&q=90"); */
+}
+.water-photo {
+  background-image:
+    linear-gradient(90deg, rgba(4, 33, 54, 0.62), rgba(4, 33, 54, 0.08)),
+    url("https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=2200&q=88");
+}
+.nature-photo {
+  background-image:
+    linear-gradient(90deg, rgba(3, 27, 45, 0.68), rgba(3, 27, 45, 0.14)),
+    url("/bottle.jpeg");
+  /* url("https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=2200&q=88"); */
+}
+.bottle-photo {
+  background-image: url("/bottle.jpeg");
+  /* background-image: url("https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=1200&q=88"); */
+}
+
+.pattern {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(18, 141, 184, 0.12) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
+
+.reveal {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.reveal:hover {
+  transform: translateY(-4px);
+}
+
+.container-x {
+  width: min(1180px, calc(100% - 40px));
+  margin-inline: auto;
+}
+@media (min-width: 768px) {
+  .container-x {
+    width: min(1180px, calc(100% - 72px));
+  }
 }
